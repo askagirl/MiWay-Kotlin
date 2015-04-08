@@ -2,8 +2,12 @@ package net.tuxv.miwaykotlin
 
 import android.support.v7.app.ActionBarActivity
 import android.os.Bundle
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
+import android.support.v4.app.FragmentPagerAdapter
 import android.view.Menu
 import android.view.MenuItem
+import kotlinx.android.synthetic.activity_main.*;
 
 
 public class MainActivity : ActionBarActivity() {
@@ -32,5 +36,23 @@ public class MainActivity : ActionBarActivity() {
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    class PagerAdapter : FragmentPagerAdapter {
+
+        val titles = array("Favourites", "Routes")
+
+        public constructor(fragmentManager : FragmentManager) {
+            super(fragmentManager)
+        }
+
+        override fun getCount() : Int {
+            return titles.size()
+        }
+
+        override fun getItem(position: Int): Fragment? {
+
+        }
+
     }
 }
