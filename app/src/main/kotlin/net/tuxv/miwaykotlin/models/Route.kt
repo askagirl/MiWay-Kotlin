@@ -1,4 +1,4 @@
-package models
+package net.tuxv.miwaykotlin.models
 
 /**
  * Created by yasith on 15-04-12.

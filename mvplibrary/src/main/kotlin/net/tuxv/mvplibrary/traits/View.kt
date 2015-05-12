@@ -1,4 +1,4 @@
-package traits.mvp
+package net.tuxv.mvplibrary.traits
 
 /**
  * Created by yasith on 15-04-12.
@@ -6,4 +6,4 @@ package traits.mvp
  * MVP Based on Mosby
  */
 
-trait MvpView {}
+trait View {}

@@ -1,14 +1,14 @@
-package traits
+package net.tuxv.mvplibrary.traits.lce
 
-import traits.mvp.MvpView
+import net.tuxv.mvplibrary.traits.View
 
 /**
  * Created by yasith on 15-04-12.
  */
 
-trait LceView<T> : MvpView{
+trait LceView<M> : View {
     fun showLoading(pullToRefresh : Boolean)
     fun showContent()
     fun showError(e : Throwable, pullToRefresh : Boolean)
-    fun setData(data : T)
+    fun setData(data : M)
 }
