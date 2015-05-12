@@ -11,7 +11,5 @@ import net.tuxv.mvplibrary.MvpLceFragment
 
 public class RoutesFragment : MvpLceFragment<Route>() {
 
-    override fun getLayoutRes(): Int {
-        return R.layout.fragment_routes
-    }
+    override fun getLayoutRes() = R.layout.fragment_routes
 }
