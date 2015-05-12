@@ -12,7 +12,7 @@ import kotlin.properties.Delegates
  * Created by yasith on 15-05-11.
  */
 
-abstract class MvpLceFragment<M> : Fragment(), LceView<M> {
+abstract class MvpLceFragment<M> : BaseFragment(), LceView<M> {
     override fun showLoading(pullToRefresh: Boolean) {
         if (!pullToRefresh) {
             animateLoadingViewIn();
@@ -24,7 +24,7 @@ abstract class MvpLceFragment<M> : Fragment(), LceView<M> {
     private var errorView : View by Delegates.notNull()
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
-        super<Fragment>.onViewCreated(view, savedInstanceState)
+        super<BaseFragment>.onViewCreated(view, savedInstanceState)
 
         if (view != null) {
             loadingView = view.findViewById(R.id.loading);

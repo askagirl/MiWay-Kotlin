@@ -11,8 +11,7 @@ import net.tuxv.mvplibrary.MvpLceFragment
 
 public class RoutesFragment : MvpLceFragment<Route>() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.fragment_routes, container, false)
+    override fun getLayoutRes(): Int {
+        return R.layout.fragment_routes
     }
 }
