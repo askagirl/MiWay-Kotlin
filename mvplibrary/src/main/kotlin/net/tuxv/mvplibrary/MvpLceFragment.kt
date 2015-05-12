@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment
 import android.view.View
 import net.tuxv.mvplibrary.traits.lce.LceView
 import net.tuxv.mvplibrary.R
+import kotlin.properties.Delegates
 
 /**
  * Created by yasith on 15-05-11.
@@ -18,9 +19,9 @@ abstract class MvpLceFragment<M> : Fragment(), LceView<M> {
         }
     }
 
-    private abstract var loadingView : View
-    private abstract var contentView : View
-    private abstract var errorView : View
+    private var loadingView : View by Delegates.notNull()
+    private var contentView : View by Delegates.notNull()
+    private var errorView : View by Delegates.notNull()
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super<Fragment>.onViewCreated(view, savedInstanceState)

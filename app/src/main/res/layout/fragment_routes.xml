@@ -4,10 +4,27 @@
              android:layout_height="match_parent"
              tools:context="net.tuxv.miwaykotlin.views.RoutesFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ProgressBar
+        android:id="@id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:layout_gravity="center" />
+
+    <FrameLayout
+        android:id="@id/content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Routes Fragment"/>
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:id="@id/error"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+
 
 </FrameLayout>
