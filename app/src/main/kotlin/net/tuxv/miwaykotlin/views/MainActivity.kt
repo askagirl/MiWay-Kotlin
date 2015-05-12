@@ -30,8 +30,8 @@ public class MainActivity : FragmentActivity() {
         override fun getPageTitle(position: Int): CharSequence? = titles.get(position)
 
         override fun getItem(position: Int): Fragment? = when (position) {
-            1 -> FavouritesFragment()
-            2 -> miwaykotlin.RoutesFragment()
+            0 -> FavouritesFragment()
+            1 -> RoutesFragment()
             else -> FavouritesFragment()
         }
     }
