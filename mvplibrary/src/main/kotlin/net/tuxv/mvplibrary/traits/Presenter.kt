@@ -6,11 +6,11 @@ package net.tuxv.mvplibrary.traits
  * MVP Based on Mosby
  */
 
-trait Presenter {
+trait Presenter<V : View> {
     /**
      * Attach the view to this Presenter
      */
-    fun attachView(view : View)
+    fun attachView(view : V)
 
     /**
      * Called when the view is destroyed. Invoked from Activity.detachView() or Fragment.onDestroyView()

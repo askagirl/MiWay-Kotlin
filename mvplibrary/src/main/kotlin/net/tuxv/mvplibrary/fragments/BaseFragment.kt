@@ -1,4 +1,4 @@
-package net.tuxv.mvplibrary
+package net.tuxv.mvplibrary.fragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment

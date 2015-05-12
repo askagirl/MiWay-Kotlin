@@ -1,11 +1,9 @@
-package net.tuxv.mvplibrary
+package net.tuxv.mvplibrary.fragments
 
-import android.opengl.Visibility
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.View
-import net.tuxv.mvplibrary.traits.lce.LceView
 import net.tuxv.mvplibrary.R
+import net.tuxv.mvplibrary.traits.lce.LceView
 import kotlin.properties.Delegates
 
 /**
