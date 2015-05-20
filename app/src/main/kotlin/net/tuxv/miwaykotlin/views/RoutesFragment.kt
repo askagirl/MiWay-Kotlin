@@ -15,6 +15,9 @@ public class RoutesFragment : MvpLceFragment<Route>() {
 
     override fun getLayoutRes() = R.layout.fragment_routes
 
+
+    // Go middle out from here
+    // https://kmangutov.wordpress.com/2015/03/28/android-mvp-consuming-restful-apis/
     override fun createPresenter() = RoutesPresenter()
 
 }
