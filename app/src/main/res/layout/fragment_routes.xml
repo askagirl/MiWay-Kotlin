@@ -4,10 +4,11 @@
              android:layout_height="match_parent"
              tools:context="net.tuxv.miwaykotlin.RoutesFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <org.lucasr.twowayview.TwoWayView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Routes Fragment"/>
+        app:twowayview_layoutManager="ListLayoutManager" />
 
 </FrameLayout>
