@@ -41,6 +41,7 @@ public class RoutesFragment : Fragment() {
             var intent = Intent(getActivity(), javaClass<StopsActivity>())
 
             intent.putExtra(JSON_ROUTE, Gson().toJson(route));
+            startActivity(intent)
         }
 
         return view
