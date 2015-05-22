@@ -15,10 +15,10 @@ public class MainActivity : FragmentActivity() {
     val TAG = "MainActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.d(TAG, "onCreate")
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        Log.d(TAG, "onCreate")
 
         pager.setAdapter(PagerAdapter(getSupportFragmentManager()))
         pagerTabStrip.setTabIndicatorColor(R.color.accent)
