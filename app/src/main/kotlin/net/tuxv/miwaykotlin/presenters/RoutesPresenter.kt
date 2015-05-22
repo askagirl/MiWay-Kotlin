@@ -3,12 +3,9 @@ package net.tuxv.miwaykotlin.presenters
 import android.util.Log
 import net.tuxv.miwaykotlin.RoutesFragment
 import net.tuxv.miwaykotlin.models.Route
-import net.tuxv.miwaykotlin.models.RouteResponse
-import net.tuxv.miwaykotlin.utils.BusTimesApi
 import net.tuxv.miwaykotlin.utils.BusTimesService
 import rx.Observer
 import rx.android.schedulers.AndroidSchedulers
-import rx.functions.Func1
 import rx.schedulers.Schedulers
 import java.util.ArrayList
 

@@ -1,6 +1,5 @@
 package net.tuxv.miwaykotlin.models
 
-import com.google.gson.annotations.Expose
 import java.util.ArrayList
 
 class RouteResponse {
