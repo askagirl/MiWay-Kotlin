@@ -11,6 +11,7 @@ import com.google.gson.Gson
 import net.tuxv.miwaykotlin.R
 import net.tuxv.miwaykotlin.models.Route
 import net.tuxv.miwaykotlin.presenters.RoutesPresenter
+import net.tuxv.miwaykotlin.utils.JSON_ROUTE
 import net.tuxv.miwaykotlin.utils.RoutesAdapter
 import org.lucasr.twowayview.TwoWayView
 import java.util.ArrayList
