@@ -37,15 +37,15 @@ public class RoutesFragment : Fragment() {
 
         if(presenter == null) {
             presenter = RoutesPresenter()
-            presenter!!.takeView(this)
+            presenter!!.attachView(this)
         } else {
-            presenter!!.takeView(this)
+            presenter!!.attachView(this)
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        presenter!!.takeView(null)
+        presenter!!.attachView(null)
         // TODO
     }
 
