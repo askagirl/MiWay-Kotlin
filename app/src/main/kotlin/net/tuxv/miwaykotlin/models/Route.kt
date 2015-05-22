@@ -7,15 +7,9 @@ import com.google.gson.annotations.Expose
  */
 
 class Route {
-    [Expose]
     var id : String? = null
-    [Expose]
     var name : String? = null
-    [Expose]
     var direction : String? = null
-    [Expose]
     var number : String? = null
-    [Expose]
-    var kind : String? = null
 }
 
