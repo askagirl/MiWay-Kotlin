@@ -14,13 +14,8 @@ import kotlin.properties.Delegates
 
 // TODO: Modify this to support full routes
 class RoutesAdapter(val context: Context) : BaseAdapter() {
-    val tag = "RoutesAdapter"
 
     var items : ArrayList<Route>? = null
-
-    init {
-        Log.d(tag, "Routes Adapter initialized")
-    }
 
     override fun getCount(): Int {
         return items?.size() ?: 0

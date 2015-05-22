@@ -1,22 +1,21 @@
 package net.tuxv.miwaykotlin
 
-import android.support.v4.app.Fragment
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import org.lucasr.twowayview.TwoWayView
 import net.tuxv.miwaykotlin.models.Favourite
-import net.tuxv.miwaykotlin.models.Route
 import net.tuxv.miwaykotlin.presenters.FavouritesPresenter
-import net.tuxv.miwaykotlin.utils.RoutesAdapter
+import org.lucasr.twowayview.TwoWayView
 import java.util.ArrayList
 import kotlin.properties.Delegates
 
 public class FavouritesFragment : Fragment() {
 
     val TAG = "FavouritesFragment"
+
     var recyclerView : TwoWayView by Delegates.notNull()
     var presenter : FavouritesPresenter? = null
 
