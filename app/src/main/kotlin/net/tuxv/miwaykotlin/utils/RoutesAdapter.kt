@@ -17,6 +17,7 @@ class RoutesAdapter(val context: Context) : BaseAdapter() {
 
     var items : ArrayList<Route>? = null
 
+    // TODO: Refactor oneline functions
     override fun getCount(): Int {
         return items?.size() ?: 0
     }
@@ -49,6 +50,7 @@ class RoutesAdapter(val context: Context) : BaseAdapter() {
         return position.toLong()
     }
 
+    // TODO: Use a kotlin setter
     fun setData(data : ArrayList<Route>) {
         items = data
         notifyDataSetChanged()
