@@ -1,6 +1,6 @@
 package net.tuxv.miwaykotlin.presenters
 
-import net.tuxv.miwaykotlin.FavouritesFragment
+import net.tuxv.miwaykotlin.views.FavouritesFragment
 
 // TODO: Implementation
 class FavouritesPresenter {

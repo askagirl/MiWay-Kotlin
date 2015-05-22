@@ -1,14 +1,15 @@
-package net.tuxv.miwaykotlin
+package net.tuxv.miwaykotlin.views
 
 import android.os.Bundle
-import android.support.v4.app.FragmentActivity
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
-import kotlinx.android.synthetic.activity_main.*;
+import kotlinx.android.synthetic.activity_main.pager
+import kotlinx.android.synthetic.activity_main.pagerTabStrip
+import net.tuxv.miwaykotlin
+import net.tuxv.miwaykotlin.R
 
 public class MainActivity : FragmentActivity() {
 
@@ -35,7 +36,7 @@ public class MainActivity : FragmentActivity() {
 
         override fun getItem(position: Int): Fragment? = when (position) {
             0 -> FavouritesFragment()
-            1 -> RoutesFragment()
+            1 -> miwaykotlin.RoutesFragment()
             else -> FavouritesFragment()
         }
     }

@@ -1,4 +1,4 @@
-package net.tuxv.miwaykotlin
+package net.tuxv.miwaykotlin.views
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import net.tuxv.miwaykotlin.R
 import net.tuxv.miwaykotlin.models.Favourite
 import net.tuxv.miwaykotlin.presenters.FavouritesPresenter
 import org.lucasr.twowayview.TwoWayView

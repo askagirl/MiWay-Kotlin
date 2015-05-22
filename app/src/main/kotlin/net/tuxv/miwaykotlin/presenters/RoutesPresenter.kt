@@ -1,7 +1,7 @@
 package net.tuxv.miwaykotlin.presenters
 
 import android.util.Log
-import net.tuxv.miwaykotlin.RoutesFragment
+import net.tuxv.miwaykotlin.views.RoutesFragment
 import net.tuxv.miwaykotlin.models.Route
 import net.tuxv.miwaykotlin.utils.BusTimesService
 import rx.Observer
