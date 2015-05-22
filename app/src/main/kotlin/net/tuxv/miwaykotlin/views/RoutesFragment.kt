@@ -1,11 +1,13 @@
 package net.tuxv.miwaykotlin.views
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.gson.Gson
 import net.tuxv.miwaykotlin.R
 import net.tuxv.miwaykotlin.models.Route
 import net.tuxv.miwaykotlin.presenters.RoutesPresenter
@@ -22,6 +24,7 @@ public class RoutesFragment : Fragment() {
     var adapter : RoutesAdapter by Delegates.notNull()
     var presenter : RoutesPresenter? = null
 
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view = inflater.inflate(R.layout.fragment_routes, container, false)
 
@@ -29,6 +32,16 @@ public class RoutesFragment : Fragment() {
         recyclerView = view?.findViewById(R.id.list) as TwoWayView
         adapter = RoutesAdapter(getActivity())
         recyclerView.setAdapter(adapter)
+
+        recyclerView.setOnItemClickListener { parent, child, position, id ->
+            var route = recyclerView.getAdapter().getItem(position) as Route
+
+            Log.d(TAG, "Clicked on " + route.id)
+
+            var intent = Intent(getActivity(), javaClass<StopsActivity>())
+
+            intent.putExtra(JSON_ROUTE, Gson().toJson(route));
+        }
 
         return view
     }

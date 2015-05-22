@@ -36,7 +36,7 @@ public class MainActivity : FragmentActivity() {
 
         override fun getItem(position: Int): Fragment? = when (position) {
             0 -> FavouritesFragment()
-            1 -> miwaykotlin.RoutesFragment()
+            1 -> RoutesFragment()
             else -> FavouritesFragment()
         }
     }
