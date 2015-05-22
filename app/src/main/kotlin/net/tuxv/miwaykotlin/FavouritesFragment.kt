@@ -2,25 +2,29 @@ package net.tuxv.miwaykotlin
 
 import android.support.v4.app.Fragment
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import org.lucasr.twowayview.TwoWayView
-import kotlinx.android.synthetic.fragment_favourites.*
+import net.tuxv.miwaykotlin.models.Favourite
 import net.tuxv.miwaykotlin.models.Route
 import net.tuxv.miwaykotlin.presenters.FavouritesPresenter
+import net.tuxv.miwaykotlin.utils.RoutesAdapter
 import java.util.ArrayList
 import kotlin.properties.Delegates
 
 public class FavouritesFragment : Fragment() {
 
+    val TAG = "FavouritesFragment"
     var recyclerView : TwoWayView by Delegates.notNull()
-    var presenter : FavouritesPresenter by Delegates.notNull()
+    var presenter : FavouritesPresenter? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view = inflater.inflate(R.layout.fragment_favourites, container, false)
 
-        recyclerView =  view.findViewById(R.id.recyclerView) as TwoWayView
+        Log.d(TAG, "onCreateView")
+        recyclerView = view?.findViewById(R.id.list) as TwoWayView
 
         return view
     }
@@ -31,17 +35,17 @@ public class FavouritesFragment : Fragment() {
         if(presenter == null) {
             presenter = FavouritesPresenter()
         } else {
-            presenter.takeView(this)
+            presenter!!.takeView(this)
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        presenter.takeView(null)
+        presenter!!.takeView(null)
         // TODO: Maybe call a different function
     }
 
-    fun onContentLoaded(routes : ArrayList<Route>) {
+    fun onContentLoaded(favourites : ArrayList<Favourite>) {
         // TODO: Implement the adapter
     }
 
@@ -49,4 +53,3 @@ public class FavouritesFragment : Fragment() {
         // TODO: Implement the loading
     }
 }
-
