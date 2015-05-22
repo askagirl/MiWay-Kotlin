@@ -12,22 +12,17 @@ import net.tuxv.miwaykotlin.models.Route
 import java.util.ArrayList
 import kotlin.properties.Delegates
 
-/**
- * Created by yasith on 15-05-21.
- */
-
+// TODO: Modify this to support full routes
 class RoutesAdapter(val context: Context) : BaseAdapter() {
     val tag = "RoutesAdapter"
+
+    var items : ArrayList<Route>? = null
+
     init {
         Log.d(tag, "Routes Adapter initialized")
     }
 
-    var items : ArrayList<Route>? = null
-
-    private val TAG = "RoutesAdapter"
-
     override fun getCount(): Int {
-        Log.d(TAG, "getCount " + (items?.size() ?:0 ))
         return items?.size() ?: 0
     }
 
@@ -56,12 +51,10 @@ class RoutesAdapter(val context: Context) : BaseAdapter() {
     }
 
     override fun getItemId(position: Int): Long {
-        // TODO: !
         return position.toLong()
     }
 
     fun setData(data : ArrayList<Route>) {
-        Log.d(TAG, "setData")
         items = data
         notifyDataSetChanged()
     }
