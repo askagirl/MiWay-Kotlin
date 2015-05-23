@@ -47,6 +47,8 @@ public class StopsActivity : Activity() {
 
             intent.putExtra(JSON_ROUTE, jsonRoute)
             intent.putExtra(JSON_STOP, Gson().toJson(stop))
+
+            startActivity(intent)
         }
 
         // TODO: Implement ViewStates and see if this should be in onCreate
