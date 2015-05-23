@@ -9,4 +9,10 @@
     <color name="secondary_text">#727272</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#B6B6B6</color>
+
+
+    // Colors for the badge
+    <color name="miway_blue">#2a8fbc</color>
+    <color name="miway_orange">#ff7f03</color>
+    <color name="school_bus_yellow">#ffd800</color>
 </resources>

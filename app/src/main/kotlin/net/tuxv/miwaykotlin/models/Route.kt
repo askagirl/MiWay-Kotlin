@@ -1,9 +1,15 @@
 package net.tuxv.miwaykotlin.models
 
-/**
- * Created by yasith on 15-04-12.
- */
+import java.util.ArrayList
 
-data class Route(val name : String, val direction : String, val number : Int) {
-    fun id() = number as String + direction
+class Route {
+    var id : String? = null
+    var name : String? = null
+    var direction : String? = null
+    var number : String? = null
+
+    class RouteResponse {
+        var items : List<Route> = ArrayList()
+    }
 }
+

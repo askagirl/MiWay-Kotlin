@@ -1,35 +1,37 @@
 package net.tuxv.miwaykotlin.presenters
 
 import android.util.Log
-import net.tuxv.miwaykotlin.views.RoutesFragment
 import net.tuxv.miwaykotlin.models.Route
+import net.tuxv.miwaykotlin.models.Stop
 import net.tuxv.miwaykotlin.utils.BusTimesService
+import net.tuxv.miwaykotlin.views.StopsActivity
 import rx.Observer
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 import java.util.ArrayList
 
-class RoutesPresenter() {
-    val TAG = "RoutesPresenter"
+class StopsPresenter(val route : Route) {
+    val TAG = "StopsPresenter"
 
-    var items : ArrayList<Route>? = null
+    var items : ArrayList<Stop>? = null
     var error : Throwable? = null
-    var view: RoutesFragment? = null
+    var view : StopsActivity? = null
 
+    // TODO: Implement
     init {
         BusTimesService().busTimesApi
-                .getRoutes()
+                .getStops(route.id!!)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map { response -> response?.items }
-                .subscribe(object : Observer<List<Route>?> {
-                    override fun onNext(routes : List<Route>?) {
-                        items = ArrayList(routes)
+                .subscribe(object : Observer<List<Stop>?> {
+                    override fun onNext(stops : List<Stop>?) {
+                        items = ArrayList(stops)
                         publish()
                     }
 
                     override fun onCompleted() {
-                        Log.d(TAG, "Completed")
+                        Log.d(TAG, "Completed Stops")
                     }
 
                     override fun onError(e: Throwable?) {
@@ -38,7 +40,7 @@ class RoutesPresenter() {
                 })
     }
 
-    fun attachView(view : RoutesFragment?) {
+    fun attachView(view : StopsActivity?) {
         this.view = view
         publish()
     }
@@ -51,5 +53,4 @@ class RoutesPresenter() {
             view!!.onError(error!!, false)
         }
     }
-
 }

@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import android.util.Log
 import kotlinx.android.synthetic.activity_main.pager
 import kotlinx.android.synthetic.activity_main.pagerTabStrip
 import net.tuxv.miwaykotlin
@@ -12,7 +13,11 @@ import net.tuxv.miwaykotlin.R
 
 public class MainActivity : FragmentActivity() {
 
+    val TAG = "MainActivity"
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.d(TAG, "onCreate")
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
