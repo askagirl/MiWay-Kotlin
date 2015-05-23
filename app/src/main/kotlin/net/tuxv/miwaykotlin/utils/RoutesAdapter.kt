@@ -1,6 +1,9 @@
 package net.tuxv.miwaykotlin.utils
 
 import android.content.Context
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
+import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -29,7 +32,11 @@ class RoutesAdapter(val context: Context) : BaseAdapter() {
         if(returnView == null) {
             returnView = LayoutInflater.from(context).inflate(R.layout.list_item_route, parent, false)
 
-            holder = ViewHolder(returnView?.findViewById(R.id.name) as TextView)
+            val name = returnView?.findViewById(R.id.name) as TextView
+            val routeId = returnView?.findViewById(R.id.route_id) as TextView
+            val badge = returnView?.findViewById(R.id.badge) as ViewGroup
+
+            holder = ViewHolder(name, routeId, badge)
 
             returnView?.setTag(holder)
         } else {
@@ -37,7 +44,10 @@ class RoutesAdapter(val context: Context) : BaseAdapter() {
         }
 
         val route = getItem(position)
-        holder.title.setText(route.name)
+
+        holder.name.setText(route.name)
+        holder.routeId.setText(route.number + shortDirection(route.direction!!))
+        holder.badge.setBackground(createBadge(route.number!!.toInt()))
 
         return returnView
     }
@@ -56,5 +66,29 @@ class RoutesAdapter(val context: Context) : BaseAdapter() {
         notifyDataSetChanged()
     }
 
-    class ViewHolder(val title : TextView)
+    private fun shortDirection(direction : String) = when(direction) {
+        "South" -> "S"
+        "North" -> "N"
+        "East" -> "E"
+        "West" -> "W"
+        "Counterclockwise" -> "CCW"
+        "Clockwise" -> "CW"
+        else -> ""
+    }
+
+    private fun createBadge(number : Int) : Drawable {
+        // TODO: Investigate what to use instead of getDrawable
+        val badge = context.getResources().getDrawable(R.drawable.route_badge)
+        badge.setColorFilter(PorterDuffColorFilter(getColor(number), PorterDuff.Mode.MULTIPLY))
+
+        return badge
+    }
+
+    private fun getColor(number : Int) = when(number) {
+        in 100..199 -> context.getResources().getColor(R.color.miway_blue)
+        in 300..400 -> context.getResources().getColor(R.color.school_bus_yellow)
+        else -> context.getResources().getColor(R.color.miway_orange)
+    }
+
+    class ViewHolder(val name : TextView, val routeId : TextView, val badge : ViewGroup)
 }
