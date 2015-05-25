@@ -11,6 +11,9 @@ import butterknife.bindView
 import net.tuxv.miwaykotlin.R
 import net.tuxv.miwaykotlin.models.Route
 import net.tuxv.miwaykotlin.models.Stop
+import net.tuxv.miwaykotlin.models.Time
+import net.tuxv.miwaykotlin.presenters.NextTimesPresenter
+import java.util.ArrayList
 import kotlin.properties.Delegates
 
 public class NextTimesFragment : Fragment() {
@@ -33,8 +36,11 @@ public class NextTimesFragment : Fragment() {
 
         val activity = getActivity() as TimesActivity
 
-        this.route = activity.route
-        this.stop = activity.stop
+        route = activity.route
+        stop = activity.stop
+
+        // TODO: Make sure this survives config changes
+        NextTimesPresenter(route, stop).attachView(this)
     }
 
     override fun onStart() {
@@ -42,6 +48,14 @@ public class NextTimesFragment : Fragment() {
 
         time1.setText("Times of ${route.name} at ${stop.name}")
     }
+
+    fun onContentLoaded(times : ArrayList<Time>) {
+        time1.setText(times.get(0).toString())
+        time2.setText(times.get(1).toString())
+        time3.setText(times.get(2).toString())
+    }
+
+    fun onError(error : Throwable, pullToRefresh : Boolean) {}
 }
 
 
