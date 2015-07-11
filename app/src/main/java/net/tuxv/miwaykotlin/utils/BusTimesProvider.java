@@ -15,9 +15,9 @@ import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class NextTimesProvider {
+public class BusTimesProvider {
 
-    private static final String TAG = "NextTimesProvider";
+    private static final String TAG = "BusTimesProvider";
     private static final String baseUrl = "http://m.miway.ca/";
 
     public static ArrayList<Time> getNextPassingTimes(String route, String dir, String stop) {
@@ -62,8 +62,61 @@ public class NextTimesProvider {
         return timeSet;
     }
 
+
+    public static ArrayList<Time> getFullTimetable(String route, String dir, String stop, int day) throws IOException {
+
+
+        Log.d(TAG, "Scraping full time table from: " + route + dir + " " + stop);
+
+
+        ArrayList<Time> timeSet = new ArrayList<>();
+
+
+        String trigger = "Weekday";
+        boolean triggerStatus = false;
+
+
+        String urlSuffix = "fullSchedule.jsp?wkd=" + day + "&sId=" + stop
+                + "&id=" + route + "_" + dir;
+        String url = baseUrl + urlSuffix;
+
+
+        Log.d(TAG, "Url: " + url);
+        Document doc = Jsoup.connect(url).timeout(0).get();
+        Elements times = doc.getElementsByTag("td");
+
+        Log.d(TAG, "Size of elements: " + times.size());
+
+        for (Element td : times) {
+            String text = td.text();
+            Log.d(TAG, "text from element: " + text);
+
+
+            // Go on until the trigger is passed
+            if (text.contains(trigger)) {
+                triggerStatus = true;
+            }
+
+
+            if (!triggerStatus) {
+                continue;
+            }
+
+            // If we arrive here we can extract bus times.
+            Log.d(TAG, "Extracting from: " + text);
+            timeSet.addAll(extractTimes(text));
+        }
+
+        for(Time t : timeSet) {
+            Log.d(TAG, "Time: " + t.toString());
+        }
+
+        return timeSet;
+    }
+
+
     private static TreeSet<Time> extractTimes(String text) {
-        TreeSet<Time> timeSet = new TreeSet<Time>();
+        TreeSet<Time> timeSet = new TreeSet<>();
         if (text.contains("AM") || text.contains("PM")) {
 
             Log.d(TAG, text);
