@@ -32,6 +32,7 @@ dependencies {
     compile 'com.squareup.retrofit:retrofit:1.9.0'
     compile 'io.reactivex:rxandroid:0.24.0'
     compile 'com.jakewharton:kotterknife:0.1.0-SNAPSHOT'
+    compile 'joda-time:joda-time:2.8.1'
 }
 buildscript {
     ext.kotlin_version = '0.12.613'
