@@ -1,8 +1,7 @@
 package net.tuxv.miwaykotlin.models
 
-import java.util.*
-import java.lang.String;
-
+import java.util.ArrayList
+import java.lang.String
 
 public class Time: Comparable<Time> {
 

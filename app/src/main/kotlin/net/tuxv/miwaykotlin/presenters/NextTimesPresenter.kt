@@ -11,7 +11,7 @@ import rx.Observable
 import rx.Observer
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
-import java.util.*
+import java.util.ArrayList
 import java.util.concurrent.TimeUnit
 
 // TODO: Use a delayed observable to change the time values when time passes
