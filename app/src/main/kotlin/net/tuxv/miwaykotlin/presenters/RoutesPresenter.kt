@@ -21,7 +21,7 @@ class RoutesPresenter() {
                 .getRoutes()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map { response -> response?.items }
+                .map { response -> response?.data }
                 .subscribe(object : Observer<List<Route>?> {
                     override fun onNext(routes : List<Route>?) {
                         items = ArrayList(routes)

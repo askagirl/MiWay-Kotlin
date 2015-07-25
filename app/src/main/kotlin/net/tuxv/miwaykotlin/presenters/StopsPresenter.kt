@@ -20,10 +20,10 @@ class StopsPresenter(val route : Route) {
     // TODO: Implement
     init {
         BusTimesService().busTimesApi
-                .getStops(route.id!!)
+                .getStops(route.num!!, route.direction!!)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map { response -> response?.items }
+                .map { response -> response?.data }
                 .subscribe(object : Observer<List<Stop>?> {
                     override fun onNext(stops : List<Stop>?) {
                         items = ArrayList(stops)

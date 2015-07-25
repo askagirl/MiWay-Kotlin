@@ -46,8 +46,8 @@ class RoutesAdapter(val context: Context) : BaseAdapter() {
         val route = getItem(position)
 
         holder.name.setText(route.name)
-        holder.routeId.setText(route.number + shortDirection(route.direction!!))
-        holder.badge.setBackground(createBadge(route.number!!.toInt()))
+        holder.routeId.setText(route.num + " " + shortDirection(route.direction!!))
+        holder.badge.setBackground(createBadge(route.num!!.toInt()))
 
         return returnView
     }
@@ -67,10 +67,10 @@ class RoutesAdapter(val context: Context) : BaseAdapter() {
     }
 
     private fun shortDirection(direction : String) = when(direction) {
-        "South" -> "S"
-        "North" -> "N"
-        "East" -> "E"
-        "West" -> "W"
+        "Southbound" -> "S"
+        "Northbound" -> "N"
+        "Eastbound" -> "E"
+        "Westbound" -> "W"
         "Counterclockwise" -> "CCW"
         "Clockwise" -> "CW"
         else -> ""

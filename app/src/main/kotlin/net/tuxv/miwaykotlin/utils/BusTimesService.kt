@@ -9,7 +9,7 @@ import rx.Observable
 import kotlin.properties.Delegates
 
 class BusTimesService() {
-    val url = "https://tactical-unison-651.appspot.com/_ah/api/busTimes/v1/"
+    val url = "http://gtfsapi-1003.appspot.com/api/v1/"
     public var busTimesApi : BusTimesApi by Delegates.notNull()
 
     init {
@@ -21,11 +21,12 @@ class BusTimesService() {
         busTimesApi = restAdapter.create(javaClass<BusTimesApi>())
     }
 
-    trait BusTimesApi {
-        [GET("/routecollection")]
+    interface BusTimesApi {
+        @GET("/routes")
         public fun getRoutes() : Observable<Route.RouteResponse>
 
-        [GET("/stopcollection/{routeId}")]
-        public fun getStops([Path("routeId")] routeId : String) : Observable<Stop.StopResponse>
+        @GET("/stops/{routeId}/{direction}")
+        public fun getStops(@Path("routeId") routeId : String,
+                            @Path("direction") direction : String) : Observable<Stop.StopResponse>
     }
 }

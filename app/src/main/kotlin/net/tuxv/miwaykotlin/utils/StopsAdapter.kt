@@ -27,7 +27,7 @@ class StopsAdapter(val context : Context) : BaseAdapter() {
 
             returnView?.setTag(holder)
         } else {
-            holder = returnView?.getTag() as ViewHolder
+            holder = returnView.getTag() as ViewHolder
         }
 
         val stop = getItem(position)

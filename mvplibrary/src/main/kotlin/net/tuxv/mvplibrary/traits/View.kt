@@ -6,4 +6,4 @@ package net.tuxv.mvplibrary.traits
  * MVP Based on Mosby
  */
 
-trait View {}
+interface View {}

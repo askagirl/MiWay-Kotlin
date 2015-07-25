@@ -1,17 +1,22 @@
 package net.tuxv.miwaykotlin.views
 
-import android.app.Activity
 import android.os.Bundle
+import android.support.v4.app.FragmentActivity
 import android.util.Log
 import com.google.gson.Gson
+import net.tuxv.miwaykotlin.R
 import net.tuxv.miwaykotlin.models.Route
 import net.tuxv.miwaykotlin.models.Stop
 import net.tuxv.miwaykotlin.utils.JSON_ROUTE
 import net.tuxv.miwaykotlin.utils.JSON_STOP
+import kotlin.properties.Delegates
 
-public class TimesActivity : Activity() {
+public class TimesActivity : FragmentActivity() {
 
     val TAG = "TimesActivity"
+
+    var route : Route by Delegates.notNull()
+    var stop : Stop by Delegates.notNull()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d(TAG, "onCreate")
@@ -21,8 +26,10 @@ public class TimesActivity : Activity() {
         val jsonStop = getIntent().getStringExtra(JSON_STOP)
 
         val gson = Gson()
-        val route = gson.fromJson(jsonRoute, javaClass<Route>())
-        val stop = gson.fromJson(jsonStop, javaClass<Stop>())
+        this.route = gson.fromJson(jsonRoute, javaClass<Route>())
+        this.stop = gson.fromJson(jsonStop, javaClass<Stop>())
+
+        setContentView(R.layout.activity_times)
 
     }
 }

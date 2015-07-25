@@ -37,7 +37,7 @@ public class RoutesFragment : Fragment() {
         recyclerView.setOnItemClickListener { parent, child, position, id ->
             var route = recyclerView.getAdapter().getItem(position) as Route
 
-            Log.d(TAG, "Clicked on " + route.id)
+            Log.d(TAG, "Clicked on " + route.num + route.direction)
 
             var intent = Intent(getActivity(), javaClass<StopsActivity>())
 
