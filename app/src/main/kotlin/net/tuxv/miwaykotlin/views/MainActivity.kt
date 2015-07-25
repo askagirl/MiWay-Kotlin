@@ -27,7 +27,7 @@ public class MainActivity : FragmentActivity() {
 
     class PagerAdapter : FragmentPagerAdapter {
 
-        val titles = array("Favourites", "Routes")
+        val titles = arrayOf("Favourites", "Routes")
 
         public constructor(fm : FragmentManager) : super(fm)
 

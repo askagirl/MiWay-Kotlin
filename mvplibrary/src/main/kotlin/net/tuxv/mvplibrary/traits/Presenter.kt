@@ -6,7 +6,7 @@ package net.tuxv.mvplibrary.traits
  * MVP Based on Mosby
  */
 
-trait Presenter {
+interface Presenter {
     /**
      * Attach the view to this Presenter
      */

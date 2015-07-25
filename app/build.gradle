@@ -32,10 +32,10 @@ dependencies {
     compile 'com.squareup.retrofit:retrofit:1.9.0'
     compile 'io.reactivex:rxandroid:0.24.0'
     compile 'com.jakewharton:kotterknife:0.1.0-SNAPSHOT'
-    compile 'org.jsoup:jsoup:1.8.2'
 }
 buildscript {
-    ext.kotlin_version = '0.11.91.1'
+    ext.kotlin_version = '0.12.613'
+
     repositories {
         mavenCentral()
     }

@@ -9,7 +9,6 @@ import android.util.Log
 import net.tuxv.miwaykotlin.models.Route
 import net.tuxv.miwaykotlin.models.Stop
 import net.tuxv.miwaykotlin.models.Time
-import net.tuxv.miwaykotlin.utils.BusTimesProvider
 import net.tuxv.miwaykotlin.views.NextTimesFragment
 import rx.Observable
 import rx.Observer
@@ -21,29 +20,29 @@ import java.util.ArrayList
 class FullTimetablePresenter(val route : Route, val stop : Stop) {
     val TAG = "NextTimesPresenter"
 
-    private var view: NextTimesFragment? = null
+    private var view: FullTimetableFragment? = null
     private var error : Throwable? = null
     private var items : ArrayList<Time>? = null
 
     init {
-        Observable.defer {() ->
-            Observable.just(BusTimesProvider.getFullTimetable(route.number, route.direction, stop.number, 1))
-        }.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object : Observer<ArrayList<Time>>{
-                    override fun onNext(times: ArrayList<Time>?) {
-                        items = ArrayList(times!!)
-                        publish()
-                    }
-
-                    override fun onError(e: Throwable?) {
-                        Log.d(TAG, "Error: " + e?.getMessage())
-                    }
-
-                    override fun onCompleted() {
-                        Log.d(TAG, "Completed")
-                    }
-                })
+//        Observable.defer { ->
+//            Observable.just(BusTimesProvider.getFullTimetable(route.number, route.direction, stop.number, 1))
+//        }.subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(object : Observer<ArrayList<Time>>{
+//                    override fun onNext(times: ArrayList<Time>?) {
+//                        items = ArrayList(times!!)
+//                        publish()
+//                    }
+//
+//                    override fun onError(e: Throwable?) {
+//                        Log.d(TAG, "Error: " + e?.getMessage())
+//                    }
+//
+//                    override fun onCompleted() {
+//                        Log.d(TAG, "Completed")
+//                    }
+//                })
     }
 
 
@@ -54,10 +53,12 @@ class FullTimetablePresenter(val route : Route, val stop : Stop) {
 
     private fun publish() {
         if(view != null && items != null) {
-            view!!.onContentLoaded(items!!)
+            //view!!.onContentLoaded(items!!)
+            // TODO: incomplete
         } else if(view != null && error != null) {
             // TODO: work on pullToRefresh
-            view!!.onError(error!!, false)
+            //view!!.onError(error!!, false)
+            // TODO: incomplete
         }
     }
 

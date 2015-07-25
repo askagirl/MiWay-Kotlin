@@ -55,6 +55,7 @@ public class NextTimesFragment : Fragment() {
         time3.setText(times.get(2).toString())
     }
 
+    // TODO: Implementation
     fun onError(error : Throwable, pullToRefresh : Boolean) {}
 }
 
