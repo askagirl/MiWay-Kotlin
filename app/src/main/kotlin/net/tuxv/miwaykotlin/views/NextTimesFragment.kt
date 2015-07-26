@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import butterknife.bindView
 import net.tuxv.miwaykotlin.R
@@ -18,6 +19,11 @@ import kotlin.properties.Delegates
 
 public class NextTimesFragment : Fragment() {
     val TAG = "NextTimesFragment"
+
+    val stopName : TextView by bindView(R.id.stopName)
+
+    val loading : View by bindView(R.id.loading)
+    val times : LinearLayout by bindView(R.id.times)
 
     val time1 : TextView by bindView(R.id.time1)
     val time2 : TextView by bindView(R.id.time2)
@@ -46,10 +52,11 @@ public class NextTimesFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        time1.setText("Times of ${route.name} at ${stop.name}")
+        stopName.setText(stop.name)
     }
 
     fun onContentLoaded(times : ArrayList<Time>) {
+        loading.setVisibility(View.GONE)
         time1.setText(times.get(0).toString())
         time2.setText(times.get(1).toString())
         time3.setText(times.get(2).toString())

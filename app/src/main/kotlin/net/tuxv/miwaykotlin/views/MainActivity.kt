@@ -6,9 +6,10 @@ import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.util.Log
+import android.view.View
+import android.widget.TextView
 import kotlinx.android.synthetic.activity_main.pager
 import kotlinx.android.synthetic.activity_main.pagerTabStrip
-import net.tuxv.miwaykotlin
 import net.tuxv.miwaykotlin.R
 
 public class MainActivity : FragmentActivity() {
@@ -23,6 +24,9 @@ public class MainActivity : FragmentActivity() {
 
         pager.setAdapter(PagerAdapter(getSupportFragmentManager()))
         pagerTabStrip.setTabIndicatorColor(R.color.accent)
+
+        val subTitle = findViewById(R.id.subtitle) as TextView
+        subTitle.setVisibility(View.GONE)
     }
 
     class PagerAdapter : FragmentPagerAdapter {

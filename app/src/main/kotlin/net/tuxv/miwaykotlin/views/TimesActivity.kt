@@ -3,6 +3,7 @@ package net.tuxv.miwaykotlin.views
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
 import android.util.Log
+import android.widget.TextView
 import com.google.gson.Gson
 import net.tuxv.miwaykotlin.R
 import net.tuxv.miwaykotlin.models.Route
@@ -31,5 +32,10 @@ public class TimesActivity : FragmentActivity() {
 
         setContentView(R.layout.activity_times)
 
+        val title = findViewById(R.id.title) as TextView
+        title.setText("${route.name}")
+
+        val subTitle = findViewById(R.id.subtitle) as TextView
+        subTitle.setText("${route.direction}")
     }
 }

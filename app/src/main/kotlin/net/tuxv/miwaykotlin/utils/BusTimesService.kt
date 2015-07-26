@@ -2,6 +2,7 @@ package net.tuxv.miwaykotlin.utils
 
 import net.tuxv.miwaykotlin.models.Route
 import net.tuxv.miwaykotlin.models.Stop
+import net.tuxv.miwaykotlin.models.Time
 import retrofit.RestAdapter
 import retrofit.http.GET
 import retrofit.http.Path
@@ -28,5 +29,10 @@ class BusTimesService() {
         @GET("/stops/{routeId}/{direction}")
         public fun getStops(@Path("routeId") routeId : String,
                             @Path("direction") direction : String) : Observable<Stop.StopResponse>
+
+        @GET("/times/{routeId}/{direction}/{stopId}")
+        public fun getTimes(@Path("routeId") routeId : String,
+                            @Path("direction") direction : String,
+                            @Path("stopId") stopId : String) : Observable<Time.TimeResponse>
     }
 }
