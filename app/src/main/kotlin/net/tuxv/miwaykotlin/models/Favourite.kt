@@ -1,5 +1,5 @@
 package net.tuxv.miwaykotlin.models
 
-data class Favourite {
-    // TODO
-}
+import io.realm.RealmObject
+
+class Favourite (val route : Route, val stop : Stop): RealmObject()
