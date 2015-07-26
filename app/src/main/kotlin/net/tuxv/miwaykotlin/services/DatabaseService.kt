@@ -1,12 +1,16 @@
 package net.tuxv.miwaykotlin.services
 
 import net.tuxv.miwaykotlin.models.Favourite
+import net.tuxv.miwaykotlin.models.Route
+import net.tuxv.miwaykotlin.models.Stop
 
 /**
  * Created by yasith on 25/07/15.
  */
 
 interface DatabaseService {
-    abstract  fun getFavourites() :List<Favourite>
-    abstract  fun saveFavourite(favourite : Favourite)
+    fun getFavourites() :List<Favourite>
+    fun saveFavourite(route : Route, stop : Stop)
+    fun isFavourite(route : Route, stop : Stop) : Boolean
+    fun flipFavourite(route : Route, stop : Stop)
 }
