@@ -5,22 +5,66 @@
               android:orientation="vertical">
 
     <TextView
-        android:id="@+id/time1"
+        android:id="@+id/stopName"
+        style="@style/Base.TextAppearance.AppCompat.Title"
+        android:layout_margin="8dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/time2"
+        android:text="@string/upcoming_times"
+        style="@style/Base.TextAppearance.AppCompat.Subhead"
+        android:layout_margin="8dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/time3"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content">
+
+        <com.github.rahatarmanahmed.cpv.CircularProgressView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/loading"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:cpv_animAutostart="true"
+            app:cpv_indeterminate="true"
+            app:cpv_color="@color/accent"
+            android:layout_gravity="center" />
+
+        <LinearLayout
+            android:id="@+id/times"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp">
+
+            <TextView
+                android:id="@+id/time1"
+                android:layout_marginTop="8dp"
+                style="@style/Base.TextAppearance.AppCompat.Body2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/time2"
+                android:layout_marginTop="8dp"
+                style="@style/Base.TextAppearance.AppCompat.Body2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/time3"
+                android:layout_marginTop="8dp"
+                style="@style/Base.TextAppearance.AppCompat.Body2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </FrameLayout>
 
     <Button
         android:id="@+id/view_full"
+        android:layout_margin="6dp"
         android:text="@string/view_full_time_table"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

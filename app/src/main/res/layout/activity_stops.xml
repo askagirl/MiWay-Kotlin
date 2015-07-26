@@ -4,9 +4,26 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <org.lucasr.twowayview.TwoWayView
-        android:id="@+id/list"
+    <include layout="@layout/toolbar" />
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+
+        <org.lucasr.twowayview.TwoWayView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <com.github.rahatarmanahmed.cpv.CircularProgressView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/loading"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:cpv_animAutostart="true"
+            app:cpv_indeterminate="true"
+            app:cpv_color="@color/accent"
+            android:layout_gravity="center" />
+    </FrameLayout>
 
 </LinearLayout>

@@ -4,5 +4,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="view_full_time_table">View Full Time Table</string>
+    <string name="upcoming_times">Upcoming bus times</string>
 
 </resources>

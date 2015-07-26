@@ -66,15 +66,6 @@ class RoutesAdapter(val context: Context) : BaseAdapter() {
         notifyDataSetChanged()
     }
 
-    private fun shortDirection(direction : String) = when(direction) {
-        "Southbound" -> "S"
-        "Northbound" -> "N"
-        "Eastbound" -> "E"
-        "Westbound" -> "W"
-        "Counterclockwise" -> "CCW"
-        "Clockwise" -> "CW"
-        else -> ""
-    }
 
     private fun createBadge(number : Int) : Drawable {
         // TODO: Investigate what to use instead of getDrawable

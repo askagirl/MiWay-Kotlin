@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/primary"
+    tools:showIn="@layout/activity_main">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:gravity="left"
+            android:src="@drawable/ic_directions_bus_white_36dp" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/logo"
+            android:layout_alignBaseline="@id/logo"
+            android:gravity="center"
+            style="@style/Base.TextAppearance.Widget.AppCompat.Toolbar.Title"
+            android:textColor="@color/abc_primary_text_material_dark"
+            android:paddingLeft="10dp"
+            android:text="@string/app_name" />
+
+
+        <TextView
+            android:id="@+id/subtitle"
+            android:layout_below="@id/title"
+            android:layout_alignStart="@id/title"
+            android:paddingLeft="12dp"
+            style="@style/Base.TextAppearance.Widget.AppCompat.Toolbar.Subtitle"
+            android:textColor="@color/abc_primary_text_material_dark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+</android.support.v7.widget.Toolbar>

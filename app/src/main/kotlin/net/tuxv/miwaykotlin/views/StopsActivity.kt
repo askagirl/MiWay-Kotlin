@@ -4,22 +4,27 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.TextView
+import butterknife.bindView
+import com.github.rahatarmanahmed.cpv.CircularProgressView
 import com.google.gson.Gson
 import net.tuxv.miwaykotlin.R
 import net.tuxv.miwaykotlin.models.Route
 import net.tuxv.miwaykotlin.models.Stop
 import net.tuxv.miwaykotlin.presenters.StopsPresenter
-import org.lucasr.twowayview.TwoWayView
-import java.util.ArrayList
-import kotlin.properties.Delegates
-import kotlinx.android.synthetic.activity_stops
 import net.tuxv.miwaykotlin.utils.JSON_ROUTE
 import net.tuxv.miwaykotlin.utils.JSON_STOP
 import net.tuxv.miwaykotlin.utils.StopsAdapter
+import org.lucasr.twowayview.TwoWayView
+import java.util.ArrayList
+import kotlin.properties.Delegates
 
 public class StopsActivity : Activity() {
 
     val TAG = "StopsActivity"
+
+    val loading : CircularProgressView by bindView(R.id.loading)
 
     var recyclerView : TwoWayView by Delegates.notNull()
     var adapter : StopsAdapter by Delegates.notNull()
@@ -34,6 +39,12 @@ public class StopsActivity : Activity() {
         val route = Gson().fromJson(jsonRoute, javaClass<Route>())
 
         setContentView(R.layout.activity_stops)
+
+        val title = findViewById(R.id.title) as TextView
+        title.setText("${route.name}")
+
+        val subTitle = findViewById(R.id.subtitle) as TextView
+        subTitle.setText("${route.direction}")
 
         recyclerView = findViewById(R.id.list) as TwoWayView
         adapter = StopsAdapter(this)
@@ -58,10 +69,12 @@ public class StopsActivity : Activity() {
         } else {
             presenter!!.attachView(this)
         }
+
     }
 
     // TODO: Implement
     fun onContentLoaded(items : ArrayList<Stop>) {
+        loading.setVisibility(View.GONE)
         adapter.setData(items)
     }
 
