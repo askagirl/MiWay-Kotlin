@@ -43,6 +43,7 @@ dependencies {
     compile 'com.facebook.stetho:stetho:1.1.1'
     compile 'com.facebook.stetho:stetho-okhttp:1.1.1'
     compile 'com.squareup.okhttp:okhttp:2.4.0'
+    compile 'nl.qbusict:cupboard:2.1.2'
 }
 buildscript {
     ext.kotlin_version = '0.12.613'

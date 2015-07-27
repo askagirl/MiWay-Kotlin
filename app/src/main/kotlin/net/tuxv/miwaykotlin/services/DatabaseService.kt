@@ -12,5 +12,5 @@ interface DatabaseService {
     fun getFavourites() :List<Favourite>
     fun saveFavourite(route : Route, stop : Stop)
     fun isFavourite(route : Route, stop : Stop) : Boolean
-    fun flipFavourite(route : Route, stop : Stop)
+    fun flipFavourite(route : Route, stop : Stop) : Boolean
 }
