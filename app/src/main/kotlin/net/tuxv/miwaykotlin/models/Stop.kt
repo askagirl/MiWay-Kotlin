@@ -1,6 +1,5 @@
 package net.tuxv.miwaykotlin.models
 
-import io.realm.RealmObject
 import java.util.ArrayList
 
 class Stop{

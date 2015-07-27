@@ -100,10 +100,5 @@ class NextTimesPresenter(val route : Route, val stop : Stop) {
             else -> false
         }
     }
-
-    fun saveFavourite() {
-        val favourite = Favourite(route, stop)
-        RealmDatabaseService().saveFavourite(route, stop)
-    }
 }
 
