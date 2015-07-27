@@ -1,9 +1,12 @@
 package net.tuxv.miwaykotlin.utils
 
+import com.facebook.stetho.okhttp.StethoInterceptor
+import com.squareup.okhttp.OkHttpClient
 import net.tuxv.miwaykotlin.models.Route
 import net.tuxv.miwaykotlin.models.Stop
 import net.tuxv.miwaykotlin.models.Time
 import retrofit.RestAdapter
+import retrofit.client.OkClient
 import retrofit.http.GET
 import retrofit.http.Path
 import rx.Observable
@@ -14,8 +17,13 @@ class BusTimesService() {
     public var busTimesApi : BusTimesApi by Delegates.notNull()
 
     init {
+
+        val okHttpClient = OkHttpClient()
+        okHttpClient.networkInterceptors().add(StethoInterceptor())
+
         val restAdapter = RestAdapter.Builder()
             .setEndpoint(url)
+            .setClient(OkClient(okHttpClient))
             .setLogLevel(RestAdapter.LogLevel.FULL)
             .build()
 
