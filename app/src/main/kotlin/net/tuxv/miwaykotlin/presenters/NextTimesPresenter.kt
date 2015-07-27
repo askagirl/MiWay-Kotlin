@@ -5,7 +5,6 @@ import net.tuxv.miwaykotlin.models.Favourite
 import net.tuxv.miwaykotlin.models.Route
 import net.tuxv.miwaykotlin.models.Stop
 import net.tuxv.miwaykotlin.models.Time
-import net.tuxv.miwaykotlin.services.RealmDatabaseService
 import net.tuxv.miwaykotlin.utils.BusTimesService
 import net.tuxv.miwaykotlin.views.NextTimesFragment
 import org.joda.time.DateTime
