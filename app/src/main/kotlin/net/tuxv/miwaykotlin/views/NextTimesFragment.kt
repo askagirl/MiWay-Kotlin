@@ -23,7 +23,6 @@ public class NextTimesFragment : Fragment() {
     val stopName : TextView by bindView(R.id.stopName)
 
     val loading : View by bindView(R.id.loading)
-    val times : LinearLayout by bindView(R.id.times)
 
     val time1 : TextView by bindView(R.id.time1)
     val time2 : TextView by bindView(R.id.time2)

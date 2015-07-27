@@ -2,7 +2,7 @@ package net.tuxv.miwaykotlin.models
 
 import java.util.ArrayList
 
-class Stop {
+class Stop{
     var stopId : String? = null
     var name : String? = null
     var lat : Float? = null

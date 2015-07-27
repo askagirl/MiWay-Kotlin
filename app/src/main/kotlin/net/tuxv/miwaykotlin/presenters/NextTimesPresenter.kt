@@ -1,6 +1,7 @@
 package net.tuxv.miwaykotlin.presenters
 
 import android.util.Log
+import net.tuxv.miwaykotlin.models.Favourite
 import net.tuxv.miwaykotlin.models.Route
 import net.tuxv.miwaykotlin.models.Stop
 import net.tuxv.miwaykotlin.models.Time
@@ -21,18 +22,6 @@ class NextTimesPresenter(val route : Route, val stop : Stop) {
     private var view: NextTimesFragment? = null
     private var error : Throwable? = null
     private val nextTimes : ArrayList<Time> = ArrayList()
-
-    private fun filterPastTimes(time : Time) : Boolean {
-        val dt = DateTime()
-        val hour = dt.getHourOfDay()
-        val minute = dt.getMinuteOfHour()
-
-        return when {
-            time.hour!! > hour -> true
-            time.hour!! == hour && time.minute!! > minute -> true
-            else -> false
-        }
-    }
 
     init {
         BusTimesService().busTimesApi
@@ -99,5 +88,16 @@ class NextTimesPresenter(val route : Route, val stop : Stop) {
         }
     }
 
+    private fun filterPastTimes(time : Time) : Boolean {
+        val dt = DateTime()
+        val hour = dt.getHourOfDay()
+        val minute = dt.getMinuteOfHour()
+
+        return when {
+            time.hour!! > hour -> true
+            time.hour!! == hour && time.minute!! > minute -> true
+            else -> false
+        }
+    }
 }
 
