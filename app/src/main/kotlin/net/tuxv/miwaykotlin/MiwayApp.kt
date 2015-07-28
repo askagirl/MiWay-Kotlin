@@ -8,6 +8,7 @@ import com.facebook.stetho.Stetho
  */
 
 class MiwayApp : Application() {
+
     override fun onCreate() {
         super.onCreate()
 
