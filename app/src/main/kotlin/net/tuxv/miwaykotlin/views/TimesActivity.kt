@@ -1,5 +1,6 @@
 package net.tuxv.miwaykotlin.views
 
+import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
 import android.graphics.drawable.Drawable
@@ -23,8 +24,10 @@ public class TimesActivity : AppCompatActivity() {
 
     val TAG = "TimesActivity"
 
-    var yellowHeart : Drawable by Delegates.notNull()
-    var whiteHeart : Drawable by Delegates.notNull()
+    var colorNormal : Int by Delegates.notNull()
+    var colorSelected : Int by Delegates.notNull()
+
+    var heart : Drawable by Delegates.notNull()
 
     var route : Route by Delegates.notNull()
     var stop : Stop by Delegates.notNull()
@@ -53,27 +56,28 @@ public class TimesActivity : AppCompatActivity() {
         val toolbar = findViewById(R.id.toolbar) as Toolbar;
         setSupportActionBar(toolbar);
 
-        whiteHeart = getResources().getDrawable(R.drawable.ic_action_favorite)
-        yellowHeart = getResources().getDrawable(R.drawable.ic_action_favorite)
-        yellowHeart.setColorFilter(PorterDuffColorFilter(getResources().getColor(R.color.accent),
-                PorterDuff.Mode.MULTIPLY))
-
         databaseService = CupboardDatabaseService.getInstance(this)
+
+        heart = getResources().getDrawable(R.drawable.ic_action_favorite)
+        colorNormal = getResources().getColor(R.color.white)
+        colorSelected = getResources().getColor(R.color.accent)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        Log.d(TAG, "onCreateOptionsMenu")
         getMenuInflater().inflate(R.menu.menu_times, menu)
 
         val favouriteItem = menu?.findItem(R.id.favourite)
+        favouriteItem?.setIcon(heart)
+
+        updateIcon()
+
         favouriteItem?.setOnMenuItemClickListener({ item ->
             if (item.getItemId() == favouriteItem?.getItemId()) {
                 Log.d(TAG, "Menu Item Clicked")
 
-                if(databaseService.flipFavourite(route, stop)) {
-                    favouriteItem?.setIcon(yellowHeart)
-                } else {
-                    favouriteItem?.setIcon(whiteHeart)
-                }
+                databaseService.flipFavourite(route, stop)
+                updateIcon()
 
                 true
             }
@@ -81,5 +85,18 @@ public class TimesActivity : AppCompatActivity() {
         })
 
         return true
+    }
+
+    private fun updateIcon(){
+
+        if(databaseService.isFavourite(route, stop)) {
+            heart.setColorFilter(PorterDuffColorFilter(colorSelected,
+                    PorterDuff.Mode.MULTIPLY))
+            Log.d(TAG, "Setting yellow icon")
+        } else {
+            Log.d(TAG, "Setting white icon")
+            heart.setColorFilter(PorterDuffColorFilter(colorNormal,
+                    PorterDuff.Mode.MULTIPLY))
+        }
     }
 }

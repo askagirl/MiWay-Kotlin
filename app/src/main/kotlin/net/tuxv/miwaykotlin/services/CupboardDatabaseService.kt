@@ -54,23 +54,21 @@ public class CupboardDatabaseService(context : Context, name : String, version :
 
     override fun isFavourite(route: Route, stop: Stop) = getFavourite(route, stop) != null
 
-    override fun flipFavourite(route: Route, stop: Stop) : Boolean {
+    override fun flipFavourite(route: Route, stop: Stop) {
         if(isFavourite(route, stop)) {
             val fav = getFavourite(route, stop)
             val db = this.getWritableDatabase()
             CupboardFactory.cupboard().withDatabase(db).delete(fav)
-            return false
         } else {
             saveFavourite(route, stop)
-            return true
         }
     }
 
     private fun getFavourite(route: Route, stop: Stop) : Favourite? {
         for(fav in getFavourites()) {
-            if (fav.routeNum == route.num &&
-                    fav.direction == route.direction &&
-                    fav.stopId == stop.stopId) {
+            if (fav.routeNum!!.equals(route.num) &&
+                    fav.direction!!.equals(route.direction) &&
+                    fav.stopId!!.equals(stop.stopId)) {
                 return fav
             }
         }
@@ -79,6 +77,7 @@ public class CupboardDatabaseService(context : Context, name : String, version :
     }
 
     override fun getFavourites(): List<Favourite> {
+        Log.d(TAG, "getFavourites")
         val db = this.getReadableDatabase()
         val cursor = CupboardFactory.cupboard().withDatabase(db).query(javaClass<Favourite>()).getCursor()
 
@@ -95,7 +94,7 @@ public class CupboardDatabaseService(context : Context, name : String, version :
             cursor.close();
         }
 
-        return ArrayList<Favourite>()
+        return favList
     }
 
 }
