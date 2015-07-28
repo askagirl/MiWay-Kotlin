@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.github.rahatarmanahmed.cpv.CircularProgressView
 import com.google.gson.Gson
 import net.tuxv.miwaykotlin.R
 import net.tuxv.miwaykotlin.models.Route
@@ -20,6 +21,8 @@ import kotlin.properties.Delegates
 public class RoutesFragment : Fragment() {
 
     val TAG = "RoutesFragment"
+
+    var loading : CircularProgressView by Delegates.notNull()
 
     var recyclerView: TwoWayView by Delegates.notNull()
     var adapter : RoutesAdapter by Delegates.notNull()
@@ -45,6 +48,8 @@ public class RoutesFragment : Fragment() {
             startActivity(intent)
         }
 
+        loading = view?.findViewById(R.id.loading) as CircularProgressView
+
         return view
     }
 
@@ -67,6 +72,7 @@ public class RoutesFragment : Fragment() {
 
     fun onContentLoaded(routes : ArrayList<Route>) {
         Log.d(TAG, "onContentLoaded")
+        loading.setVisibility(View.GONE)
         adapter.setData(routes)
     }
 
