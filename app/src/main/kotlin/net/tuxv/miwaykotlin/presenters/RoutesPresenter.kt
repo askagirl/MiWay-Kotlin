@@ -33,7 +33,7 @@ class RoutesPresenter() {
                     }
 
                     override fun onError(e: Throwable?) {
-                        Log.d(TAG, e?.getMessage())
+                        Log.d(TAG, "ERROR" + e?.getMessage())
                     }
                 })
     }

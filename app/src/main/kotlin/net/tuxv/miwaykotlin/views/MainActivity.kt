@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentPagerAdapter
 import android.util.Log
 import android.view.View
 import android.widget.TextView
+import com.crashlytics.android.Crashlytics
+import io.fabric.sdk.android.Fabric
 import kotlinx.android.synthetic.activity_main.pager
 import kotlinx.android.synthetic.activity_main.pagerTabStrip
 import net.tuxv.miwaykotlin.R
@@ -18,8 +20,11 @@ public class MainActivity : FragmentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d(TAG, "onCreate")
-
         super.onCreate(savedInstanceState)
+
+        Fabric.with(this, Crashlytics())
+
+
         setContentView(R.layout.activity_main)
 
         pager.setAdapter(PagerAdapter(getSupportFragmentManager()))
@@ -27,6 +32,7 @@ public class MainActivity : FragmentActivity() {
 
         val subTitle = findViewById(R.id.subtitle) as TextView
         subTitle.setVisibility(View.GONE)
+
     }
 
     class PagerAdapter : FragmentPagerAdapter {

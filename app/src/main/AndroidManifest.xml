@@ -18,6 +18,9 @@
         </activity>
         <activity android:name=".views.StopsActivity" />
         <activity android:name=".views.TimesActivity" />
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="c3b2c2aeb778a18eaa28fd3502249b8f3f3ad027" />
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 
