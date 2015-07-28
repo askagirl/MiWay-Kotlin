@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
 apply plugin: 'kotlin-android'
 
 android {
@@ -6,11 +7,11 @@ android {
     buildToolsVersion "21.1.2"
 
     defaultConfig {
-        applicationId "net.tuxv.miwaykotlin"
-        minSdkVersion 21
+        applicationId "net.tuxv.mississaugabusses"
+        minSdkVersion 17
         targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        versionCode 17
+        versionName "0.9.17"
     }
     buildTypes {
         release {
@@ -44,19 +45,25 @@ dependencies {
     compile 'com.facebook.stetho:stetho-okhttp:1.1.1'
     compile 'com.squareup.okhttp:okhttp:2.4.0'
     compile 'nl.qbusict:cupboard:2.1.2'
+    compile('com.crashlytics.sdk.android:crashlytics:2.5.0@aar') {
+        transitive = true;
+    }
 }
 buildscript {
     ext.kotlin_version = '0.12.613'
 
     repositories {
         mavenCentral()
+        maven { url 'https://maven.fabric.io/public' }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
+        classpath 'io.fabric.tools:gradle:1.+'
     }
 }
 repositories {
     mavenCentral()
     maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    maven { url 'https://maven.fabric.io/public' }
 }

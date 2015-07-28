@@ -90,7 +90,7 @@ public class FavouritesFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        presenter!!.attachView(null)
+        presenter = null
         // TODO
     }
 
