@@ -29,3 +29,6 @@ production/
 *.swp
 .DS_Store
 .metadata/
+
+# Fabric secret
+app/fabric.properties

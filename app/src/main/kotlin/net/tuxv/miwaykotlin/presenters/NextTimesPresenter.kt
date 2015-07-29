@@ -26,6 +26,7 @@ class NextTimesPresenter(val route : Route, val stop : Stop) {
     init {
         BusTimesService().busTimesApi
                 .getTimes(route.num!!, route.direction!!, stop.stopId!!)
+                .retry(3)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map { response -> response?.data }
@@ -81,7 +82,7 @@ class NextTimesPresenter(val route : Route, val stop : Stop) {
 
     private fun publish() {
         if(view != null && nextTimes.size() > 0) {
-            view?.onContentLoaded(nextTimes)
+            view?.onContentLoaded(ArrayList<Time>())
         } else if(view != null && error != null) {
             // TODO: work on pullToRefresh
             view?.onError(error!!, false)

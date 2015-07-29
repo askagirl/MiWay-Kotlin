@@ -32,6 +32,15 @@
             app:cpv_color="@color/accent"
             android:layout_gravity="center" />
 
+        <TextView
+            android:id="@+id/emptyMessage"
+            android:visibility="gone"
+            android:text="@string/no_more_busses"
+            style="@style/Base.TextAppearance.AppCompat.Subhead"
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <LinearLayout
             android:id="@+id/times"
             android:orientation="vertical"

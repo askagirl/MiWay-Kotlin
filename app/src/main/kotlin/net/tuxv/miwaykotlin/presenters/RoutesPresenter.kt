@@ -19,6 +19,7 @@ class RoutesPresenter() {
     init {
         BusTimesService().busTimesApi
                 .getRoutes()
+                .retry(3)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map { response -> response?.data }

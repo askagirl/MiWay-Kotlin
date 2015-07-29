@@ -24,9 +24,13 @@ public class NextTimesFragment : Fragment() {
 
     val loading : View by bindView(R.id.loading)
 
+    val timesGroup : ViewGroup by bindView(R.id.times)
+
     val time1 : TextView by bindView(R.id.time1)
     val time2 : TextView by bindView(R.id.time2)
     val time3 : TextView by bindView(R.id.time3)
+
+    val emptyMessage : TextView by bindView(R.id.emptyMessage)
 
     var route : Route by Delegates.notNull()
     var stop : Stop by Delegates.notNull()
@@ -56,9 +60,16 @@ public class NextTimesFragment : Fragment() {
 
     fun onContentLoaded(times : ArrayList<Time>) {
         loading.setVisibility(View.GONE)
-        time1.setText(times.get(0).toString())
-        time2.setText(times.get(1).toString())
-        time3.setText(times.get(2).toString())
+        if(times.size() == 0) {
+            timesGroup.setVisibility(View.GONE)
+            emptyMessage.setVisibility(View.VISIBLE)
+        } else {
+            timesGroup.setVisibility(View.VISIBLE)
+            emptyMessage.setVisibility(View.GONE)
+            time1.setText(times.get(0)?.toString())
+            time2.setText(times.get(1)?.toString())
+            time3.setText(times.get(2)?.toString())
+        }
     }
 
     // TODO: Implementation

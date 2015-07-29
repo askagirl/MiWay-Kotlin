@@ -15,7 +15,7 @@ public class Time: Comparable<Time> {
         else -> 1
     }
 
-    override fun toString() = "${hour}:${String.format("%02d", minute)}"
+    override fun toString() = "${hour!!%24}:${String.format("%02d", minute)}"
 
     // TODO: 24 hour time
 
