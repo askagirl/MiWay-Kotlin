@@ -7,5 +7,6 @@
     <string name="upcoming_times">Upcoming bus times</string>
     <string name="favourite">Favourite</string>
     <string name="coming_soon">More features coming soon</string>
+    <string name="no_more_busses">No more busses for today</string>
 
 </resources>
