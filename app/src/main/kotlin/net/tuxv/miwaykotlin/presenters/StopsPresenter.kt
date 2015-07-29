@@ -1,6 +1,7 @@
 package net.tuxv.miwaykotlin.presenters
 
 import android.util.Log
+import com.crashlytics.android.Crashlytics
 import net.tuxv.miwaykotlin.models.Route
 import net.tuxv.miwaykotlin.models.Stop
 import net.tuxv.miwaykotlin.utils.BusTimesService
@@ -36,7 +37,8 @@ class StopsPresenter(val route : Route) {
                     }
 
                     override fun onError(e: Throwable?) {
-                        Log.d(TAG, e?.getMessage())
+                        Log.d(TAG, "Error " + e?.getMessage())
+                        Crashlytics.log("Error : " + e?.getMessage())
                     }
                 })
     }
