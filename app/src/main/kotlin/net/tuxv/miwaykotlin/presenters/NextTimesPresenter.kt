@@ -1,7 +1,7 @@
 package net.tuxv.miwaykotlin.presenters
 
 import android.util.Log
-import net.tuxv.miwaykotlin.models.Favourite
+import com.crashlytics.android.Crashlytics
 import net.tuxv.miwaykotlin.models.Route
 import net.tuxv.miwaykotlin.models.Stop
 import net.tuxv.miwaykotlin.models.Time
@@ -46,7 +46,9 @@ class NextTimesPresenter(val route : Route, val stop : Stop) {
                                 .observeOn(AndroidSchedulers.mainThread())
                                 .subscribe(object : Observer<List<Time>?> {
                                     override fun onError(e: Throwable?) {
-                                        throw UnsupportedOperationException()
+                                        Crashlytics.log("onError called on inner Observable " +
+                                                "\n times is this big: " + times?.size() +
+                                                "\n message: " + e?.getMessage())
                                     }
 
                                     override fun onNext(times: List<Time>?) {
@@ -68,7 +70,7 @@ class NextTimesPresenter(val route : Route, val stop : Stop) {
                     }
 
                     override fun onError(e: Throwable?) {
-                        Log.d(TAG, e?.getMessage())
+                        Crashlytics.log("onError on outer loop " + e?.getMessage())
                     }
 
                 })

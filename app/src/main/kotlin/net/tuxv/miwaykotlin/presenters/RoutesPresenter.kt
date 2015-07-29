@@ -1,9 +1,10 @@
 package net.tuxv.miwaykotlin.presenters
 
 import android.util.Log
-import net.tuxv.miwaykotlin.views.RoutesFragment
+import com.crashlytics.android.Crashlytics
 import net.tuxv.miwaykotlin.models.Route
 import net.tuxv.miwaykotlin.utils.BusTimesService
+import net.tuxv.miwaykotlin.views.RoutesFragment
 import rx.Observer
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
@@ -35,6 +36,7 @@ class RoutesPresenter() {
 
                     override fun onError(e: Throwable?) {
                         Log.d(TAG, "ERROR" + e?.getMessage())
+                        Crashlytics.log("Error: " + e?.getMessage())
                     }
                 })
     }
