@@ -26,6 +26,7 @@ class NextTimesPresenter(val route : Route, val stop : Stop) {
     init {
         BusTimesService().busTimesApi
                 .getTimes(route.num!!, route.direction!!, stop.stopId!!)
+                .retry(3)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map { response -> response?.data }
