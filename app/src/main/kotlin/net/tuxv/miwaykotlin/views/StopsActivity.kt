@@ -8,6 +8,8 @@ import android.view.View
 import android.widget.TextView
 import butterknife.bindView
 import com.github.rahatarmanahmed.cpv.CircularProgressView
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 import com.google.gson.Gson
 import net.tuxv.miwaykotlin.R
 import net.tuxv.miwaykotlin.models.Route
@@ -70,6 +72,11 @@ public class StopsActivity : Activity() {
             presenter!!.attachView(this)
         }
 
+
+        // Ads
+        val adView = findViewById(R.id.adView) as AdView
+        val adRequest = AdRequest.Builder().addTestDevice("79DDF7617C44C2C04C9DF163F5BC6144").build();
+        adView.loadAd(adRequest)
     }
 
     // TODO: Implement

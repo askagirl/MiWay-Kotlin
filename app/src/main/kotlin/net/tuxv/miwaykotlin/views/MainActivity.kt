@@ -9,6 +9,8 @@ import android.util.Log
 import android.view.View
 import android.widget.TextView
 import com.crashlytics.android.Crashlytics
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 import io.fabric.sdk.android.Fabric
 import kotlinx.android.synthetic.activity_main.pager
 import kotlinx.android.synthetic.activity_main.pagerTabStrip
@@ -33,6 +35,10 @@ public class MainActivity : FragmentActivity() {
         val subTitle = findViewById(R.id.subtitle) as TextView
         subTitle.setVisibility(View.GONE)
 
+        // Ads
+        val adView = findViewById(R.id.adView) as AdView
+        val adRequest = AdRequest.Builder().addTestDevice("79DDF7617C44C2C04C9DF163F5BC6144").build();
+        adView.loadAd(adRequest)
     }
 
     class PagerAdapter : FragmentPagerAdapter {
