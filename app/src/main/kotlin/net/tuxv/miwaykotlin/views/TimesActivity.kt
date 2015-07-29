@@ -1,6 +1,5 @@
 package net.tuxv.miwaykotlin.views
 
-import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
 import android.graphics.drawable.Drawable
@@ -10,6 +9,8 @@ import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.view.Menu
 import android.widget.TextView
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 import com.google.gson.Gson
 import net.tuxv.miwaykotlin.R
 import net.tuxv.miwaykotlin.models.Route
@@ -61,6 +62,12 @@ public class TimesActivity : AppCompatActivity() {
         heart = getResources().getDrawable(R.drawable.ic_action_favorite)
         colorNormal = getResources().getColor(R.color.white)
         colorSelected = getResources().getColor(R.color.accent)
+
+
+        // Ads
+        val adView = findViewById(R.id.adView) as AdView
+        val adRequest = AdRequest.Builder().addTestDevice("79DDF7617C44C2C04C9DF163F5BC6144").build();
+        adView.loadAd(adRequest)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

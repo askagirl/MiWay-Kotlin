@@ -48,6 +48,8 @@ dependencies {
     compile('com.crashlytics.sdk.android:crashlytics:2.5.0@aar') {
         transitive = true;
     }
+    compile 'com.google.android.gms:play-services-ads:7.5.0'
+
 }
 buildscript {
     ext.kotlin_version = '0.12.613'
